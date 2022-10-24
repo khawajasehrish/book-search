@@ -1,7 +1,15 @@
+import React, { useState } from "react";
+
 function SearchResult({ data }) {
+const [table,setTable] = useState(data);
+const sortData = () => {
+let sortedData = [...data];
+sortedData.sort((a, b) => a.title.localeCompare(b.title));
+setTable(sortedData);
+}
   return (
     <>
-      <button className="right">Sort A-Z</button>
+      <button className="right"onClick={sortData}>Sort A-Z</button>
       <table id="result">
         <thead>
           <tr>
@@ -12,18 +20,19 @@ function SearchResult({ data }) {
           </tr>
         </thead>
         <tbody>
-          {data.docs.map((book, bookIndex) => {
+          {table.map((book, bookIndex) => {
+            let img = "https://covers.openlibrary.org/b/isbn/" + book.isbn + "-S.jpg"
             return (
               <tr key={bookIndex}>
-                <td>cover</td>
+                <td><img src={img} alt="book cover"/></td>
                 <td>{book.title}</td>
                 <td>
-                  {book.author_name.map((auth, authIndex) => {
+                  {book.author.map((auth, authIndex) => {
                     return <p key={authIndex}>{auth}</p>;
                   })}
                 </td>
                 <td>
-                  {book.first_publish_year}
+                  {book.publishYear}
                 </td>
               </tr>
             );
