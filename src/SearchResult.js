@@ -24,7 +24,8 @@ setTable(sortedData);
             let img = "https://covers.openlibrary.org/b/isbn/" + book.isbn + "-S.jpg"
             return (
               <tr key={bookIndex}>
-                <td><img src={img} alt="book cover"/></td>
+                <td><img src={img} alt="book cover"/>
+                </td>
                 <td>{book.title}</td>
                 <td>
                   {book.author.map((auth, authIndex) => {
