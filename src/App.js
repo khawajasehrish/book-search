@@ -25,7 +25,8 @@ function App() {
     }
   };
 
-  
+  // can do this for fetching images.
+
   /* async function fetchImage(url) {
     const img = new Image();
     return new Promise((res, rej) => {
